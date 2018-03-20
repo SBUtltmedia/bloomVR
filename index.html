@@ -2,8 +2,8 @@
 <html>
 
 <head>
-    <title>Hello, WebVR! - A-Frame</title>
-    <meta name="description" content="Hello, WebVR! - A-Frame">
+    <title>bloomVR</title>
+    <meta name="description" content="bloomVR">
     <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
     <script src="https://aframe.io/releases/0.7.0/aframe.min.js"></script>
     <script src="script.js"></script>
@@ -13,9 +13,10 @@
 </head>
 
 <body>
-    <a-scene>
-        <a-camera position="3 -2 1" rotation="74 5 0" />
-
+    <a-scene >
+        <a-camera  wasd-controls="fly: true" ></a-camera>
+        <a-entity id="stepHolder" position = "-1.725 1.636 -9.442" rotation = "90 140 180"></a-entity>
+        <a-entity hover-text="value: I am hovered."></a-entity>
         <a-sky color="#ECECEC"></a-sky>
     </a-scene>
 </body>
