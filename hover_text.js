@@ -3,9 +3,6 @@ AFRAME.registerComponent('hover-text', {
         value: {
             default: ''
         }
-        size: {
-            default: 20 px;
-        }
     },
 
     init: function () {

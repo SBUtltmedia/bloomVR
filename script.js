@@ -42,6 +42,8 @@ $(function () {
                 var entityEl = document.createElement('a-entity');
                 entityEl.setAttribute("step", "color: hsl(" + hue + ", " + saturation + "% ," + brightnessTemp + "%)");
                 entityEl.setAttribute("step", "depth: " + (initialDepth * (lengthCounter + widthCounter)));
+                entityEl.setAttribute("class", "step");
+
                 entityEl.setAttribute("position", `${x+(countShift * 0.5)} ${y+(countShiftY * 0.5)} ${incrememntZ -= ((widthCounter) * 0.06) }`);
                 //initialDepth += 0.125;
                 countShiftY++
@@ -49,28 +51,28 @@ $(function () {
                 lengthCounter++;
 
                 console.log(initialDepth * (lengthCounter + widthCounter))
+                $(entityEl).on("fusing", function (evt) {
+                    console.log("dfsd")
+                    $("#textHolder").attr("text", "value: Phred");
+                    var smartText = sceneEl.querySelector('#smartText');
+                    smartText.emit('textShow')
+
+                    // $("#smartText").animate({"scale","1 1 1")
+                });
 
             }
             widthCounter++;
         }
-        var hoverEls = sceneEl.querySelectorAll('step');
-        for (var i = 0; i < hoverEls.length; i++) {
-            var hoverEl = hoverEls[i];
-            hoverElBox = hoverEl.querySelector('a-entity');
-            hoverElBox.addEventListener('click', function (evt) {
-                // evt.stopPropagation();
-                console.log('mouseenter', evt);
-                evt.target.nextElementSibling.emit('hoveron');
-            }, true);
-            hoverElBox.addEventListener('mouseleave', function (evt) {
-                // evt.stopPropagation();
-                console.log('mouseleave', evt.target.parentNode);
-                evt.target.nextElementSibling.emit('hoveroff');
-            }, true);
-        }
+        // document.querySelector('step').addEventListener('click', function (evt) {
+        //console.log('This 2D element was clicked!');
+        //});
     }
 
 
 
-
 });
+
+$.when(getBloomData()).then(
+    function (bloomData) {
+        console.log(bloomData)
+    });
