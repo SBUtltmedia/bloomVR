@@ -17,7 +17,10 @@ AFRAME.registerComponent('step', {
             type: 'color',
             default: 'rgb(255,0,0)'
         },
-
+        text: {
+            type: 'string',
+            default: 'test'
+        }
         //    position: {type: 'vec3', default: {x: 0, y: 0, z: 0}  }
     },
 

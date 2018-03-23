@@ -10,7 +10,7 @@ AFRAME.registerComponent('hover-text', {
         var el = this.el;
 
         el.addEventListener('mouseenter', function () {
-            el.setAttribute('text', {
+            el.setAttribute('value', {
                 content: data.content
             });
         });

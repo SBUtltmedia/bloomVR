@@ -5,7 +5,7 @@
     <title>bloomVR</title>
     <meta name="description" content="bloomVR">
     <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
-    
+
     <script charset="utf-8" type="text/javascript" src="jquery.csv.js"></script>
     <script src="https://aframe.io/releases/0.7.0/aframe.min.js"></script>
     <script src="https://unpkg.com/aframe-text-geometry-component@^0.5.0/dist/aframe-text-geometry-component.min.js"></script>
@@ -20,25 +20,23 @@
 <body>
     <a-scene>
         <a-camera wasd-controls="fly: true">
-        <a-entity id="smartText" geometry="primitive: plane; width: .4; height:.14" material="color: #fff;opacity:0.8"  position="0 .15 -1" scale="0 0 0" rotation="0 0 0">
-                <a-entity id="textHolder"  text="color: red"></a-entity>
+            <a-entity id="smartText" geometry="primitive: plane; width: .4; height:.14" material="color: #fff;opacity:0.8" position="0 .15 -1" scale="0 0 0" rotation="0 0 0">
+                <a-entity id="textHolder" text="color: red"></a-entity>
                 <a-animation begin="textHide" easing="ease-in" dur="400" attribute="scale" fill="forwards" to="0 0 0"></a-animation>
                 <a-animation begin="textShow" easing="ease-in" dur="400" attribute="scale" fill="forwards" from="0 0 0" to="1 1 1"></a-animation>
             </a-entity>
-        
-        
-        <a-entity id="cursor" cursor="fuse: true; fuseTimeout: 1000" position="0 0 -1" geometry="primitive: ring; radiusInner: 0.02; radiusOuter: 0.03" material="color: red; shader: flat">
+
+
+            <a-entity id="cursor" cursor="fuse: true; fuseTimeout: 1000" position="0 0 -1" geometry="primitive: ring; radiusInner: 0.02; radiusOuter: 0.03" material="color: red; shader: flat">
 
                 <a-animation begin="fusing" easing="ease-in" dur="1000" attribute="scale" fill="none" to="0.1 0.1 0.1"></a-animation>
                 <a-animation begin="click" easing="ease-in" attribute="scale" to="1 1 1"></a-animation>
 
             </a-entity>
 
-        
+
         </a-camera>
-<!--        <a-entity hover-text="value = 'I am hovered.'"></a-entity>-->
-        <a-entity  text-geometry="value: What's up; size: .15"></a-entity>
-        <a-entity text-geometry="value: Dog?; color : transparent"></a-entity>
+
         <a-entity id="stepHolder" position="-1.725 1.636 -9.442" rotation="90 140 180"></a-entity>
 
         <a-sky color="#ECECEC"></a-sky>
