@@ -2,16 +2,16 @@ AFRAME.registerComponent('step', {
     schema: {
         width: {
             type: 'number',
-            default: .5
+            default: 1
         },
         height: {
             type: 'number',
-            default: .5
+            default: 1
         },
 
         depth: {
             type: 'number',
-            default: .5
+            default: 1
         },
         color: {
             type: 'color',
@@ -20,7 +20,7 @@ AFRAME.registerComponent('step', {
         text: {
             type: 'string',
             default: 'test'
-        }
+        },
         //    position: {type: 'vec3', default: {x: 0, y: 0, z: 0}  }
     },
 
