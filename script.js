@@ -42,7 +42,7 @@ $.when(getBloomData()).then(
                 var countShiftY = 0
                 lengthCounter = 1;
                  for( y in [...Array(terrainLength).keys()]) {
-                    var shrinkage=(lengthCounter + widthCounter)* shrinkScale;
+                    var shrinkage= (lengthCounter + widthCounter)* shrinkScale;
                     console.log(shrinkage, lengthCounter, widthCounter)
                     var height=shrinkage;
                     brightnessTemp -= 10;
@@ -56,14 +56,16 @@ $.when(getBloomData()).then(
                     entityEl.setAttribute("id", `${(y)}_${x}`);
                     countShiftY++
                     stepHolder.appendChild(entityEl);
-                    entityEl.setAttribute("step", "text: " + data[lengthCounter-1][widthCounter-1]);
+                   // entityEl.setAttribute("step", "text:  + data[lengthCounter-1][widthCounter-1]);
                     console.log(entityEl.attributes.getNamedItem("step"))
                     $(entityEl).on("fusing", function (evt) {
+                        
+                        console.log(this.fusing)
                         var id=evt.target.id
                         var [row,col]=id.split("_")
                         console.log(data[row][col])
-                        $("#textHolder").attr("text", "value: "  +data[row][col]);
-                        var smartText = sceneEl.querySelector('#smartText');
+                        document.querySelector("#textHolder").setAttribute("text", {value: '\n'+ data[row][col]+'\n\n'});
+                        var smartText = sceneEl.querySelector('#textHolder');
                         smartText.emit('textShow')
                     });
                     lengthCounter++;    
