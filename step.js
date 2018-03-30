@@ -17,6 +17,10 @@ AFRAME.registerComponent('step', {
             type: 'color',
             default: 'rgb(255,0,0)'
         },
+        opacity: {
+            type: 'number',
+            default: 0.5
+        },
         text: {
             type: 'string',
             default: 'test'
@@ -30,15 +34,13 @@ AFRAME.registerComponent('step', {
         this.geometry = new THREE.BoxBufferGeometry(data.width, data.height, data.depth);
         this.position = data.position;
         this.material = new THREE.MeshStandardMaterial({
-            color: data.color
+            color: data.color,
+            //opacity: data.opacity
         });
+        
         this.mesh = new THREE.Mesh(this.geometry, this.material);
         el.setObject3D('mesh', this.mesh);
-        //    el.setAttribute('position', {
-        //      x: data.position.x,
-        //      y: data.position.y ,
-        //      z: data.position.z 
-        //    });
+        //el.setAttribute("material", "src: border.png;alphaTest: 0.1;color:" + data.color);
     },
 
     /**
