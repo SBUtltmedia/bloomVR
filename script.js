@@ -48,14 +48,13 @@ $.when(getBloomData()).then(
                         continue;
                     }
                     var shrinkage = ((lengthCounter-1) + (widthCounter-1)) * shrinkScale;
-                    console.log(shrinkage, lengthCounter, widthCounter)
                     var height;
                     var text = "";
                     var color = ""
                     if (x == 0) {
                         height = 0.01;
                         text = colWords[y-1]
-                        color = "blue";
+                        color = "white";
                     }
                     else if (y == 0) {
                         height = 0.01;
@@ -71,20 +70,19 @@ $.when(getBloomData()).then(
 
                     brightnessTemp -= 10;
                     var entityEl = document.createElement('a-entity');
+                    
+                    entityEl.setAttribute("id", `${(y)}_${(x)}`);
                     entityEl.setAttribute("step", "color: hsl(" + hue + ", " + saturation + "% ," + brightnessTemp + "%)");
                     entityEl.setAttribute("step", "height: " + height);
                     entityEl.setAttribute("class", "step");
                     entityEl.setAttribute("text", "value: " + text + "; width: 3; align:center; baseline: bottom; color: " + color);
                     entityEl.setAttribute("position", `${-x} ${height/2} ${-y}  `);
-                    entityEl.setAttribute("id", `${(y)}_${x}`);
                     countShiftY++
                     stepHolder.appendChild(entityEl);
-                    console.log(entityEl.attributes.getNamedItem("step"))
                     $(entityEl).on("fusing", function (evt) {
-                        console.log(this.fusing)
-                        var id = evt.target.id
+                        var id = evt.currentTarget.id
                         var [row, col] = id.split("_")
-                        console.log(data[row][col])
+                        console.log(row,col)
                         document.querySelector("#textHolder").setAttribute("text", {
                             value: '\n' + data[row][col] + '\n\n'
                         });

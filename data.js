@@ -5,7 +5,7 @@ function getBloomData() {
 
 
 
-    $.get("https://apps.tlt.stonybrook.edu/gproxy/?id=1paDFGUTPZeBcbdWtxD5x8IIQGG8TJqMiI8uNpytUCgU&gid=1755631183", function (data) {
+    $.get("https://apps.tlt.stonybrook.edu/gproxy/?id=1paDFGUTPZeBcbdWtxD5x8IIQGG8TJqMiI8uNpytUCgU&gid=778826154", function (data) {
         var bloomData = $.csv.toObjects(data);
         bloomPromise.resolve(bloomData)
 
