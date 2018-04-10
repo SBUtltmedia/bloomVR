@@ -21,18 +21,29 @@
 <body>
     <a-scene >
         
+ <a-assets>
+    <a-mixin id="billboard" text="font: https://cdn.aframe.io/fonts/DejaVu-sdf.fnt" geometry="primitive: plane;   height: auto;"  material="color: #fff; opacity:0.8;" ></a-mixin>
+
+  </a-assets>
+
+        
+        
+        
+        
         <a-camera wasd-controls="fly: true">
 
-            <a-entity id="textHolder" material="color: #fff; opacity:0.8;" geometry="primitive: plane;   height: auto; width: auto;" position="0 0.15 -1" text="color: red;align:center;whiteSpace:pre;">
-                <a-animation begin="textHide" easing="ease-in" dur="400" attribute="scale" fill="forwards" to="0 0 0"></a-animation>
-                <a-animation begin="textShow" easing="ease-in" dur="400" attribute="scale" fill="forwards" from="0 0 0" to="1 1 1"></a-animation>
+            <a-entity id="textHolder"  position="0 0.15 -1" >
+                <a-entity id="title" mixin="billboard"></a-entity>
+                <a-entity  position="0 -.08 0" mixin="billboard" id="body"></a-entity>
+                <a-animation begin="textHide" easing="ease-out" dur="1000" attribute="scale" fill="forwards" to="0 0 0"></a-animation>
+                <a-animation begin="textShow" easing="ease-in" dur="1000" attribute="scale" fill="forwards" from="0 0 0" to="1 1 1"></a-animation>
             </a-entity>
 
 
-            <a-entity id="cursor" cursor="fuse: true; fuseTimeout: 1000" position="0 0 -1" geometry="primitive: ring; radiusInner: 0.02; radiusOuter: 0.03" material="color: red; shader: flat">
+            <a-entity id="cursor" cursor="fuse: true; fuseTimeout: 1000" position="0 0 -1" geometry="primitive: ring; radiusInner: 0.01; radiusOuter: 0.02" material="color: red; shader: flat">
 
-                <a-animation begin="fusing" easing="ease-in" dur="1000" attribute="scale" fill="none" to="0.1 0.1 0.1"></a-animation>
-                <a-animation begin="click" easing="ease-in" attribute="scale" to="1 1 1"></a-animation>
+                <a-animation begin="fusing" easing="ease-in" dur="1000" attribute="scale" fill="forwards" to="0.1 0.1 0.1"></a-animation>
+
 
             </a-entity>
 

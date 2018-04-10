@@ -70,7 +70,7 @@ $.when(getBloomData()).then(
 
                     brightnessTemp -= 10;
                     var entityEl = document.createElement('a-entity');
-                    
+                             var smartText = sceneEl.querySelector('#textHolder');
                     entityEl.setAttribute("id", `${(y)}_${(x)}`);
                     entityEl.setAttribute("step", "color: hsl(" + hue + ", " + saturation + "% ," + brightnessTemp + "%)");
                     entityEl.setAttribute("step", "height: " + height);
@@ -79,13 +79,26 @@ $.when(getBloomData()).then(
                     entityEl.setAttribute("position", `${-x} ${height/2} ${-y}  `);
                     countShiftY++
                     stepHolder.appendChild(entityEl);
+                    
+                   $(entityEl).on("mouseleave",function(evt){      smartText.emit('textHide')})
+                    
                     $(entityEl).on("fusing", function (evt) {
                         var id = evt.currentTarget.id
                         var [row, col] = id.split("_")
                         console.log(row,col)
-                        document.querySelector("#textHolder").setAttribute("text", {
-                            value: '\n' + data[row][col] + '\n\n'
+                        var title= document.querySelector("#textHolder #title");
+                        var body= document.querySelector("#textHolder #body");
+                        var [titleText,bodyText]=data[row][col].split("|");
+                       // text="color: red;align:center;whiteSpace:pre;"
+                        
+                            title.setAttribute("text", {
+                            value: titleText ,color: 'red',align:'center',whiteSpace:'pre'
                         });
+                        
+                        body.setAttribute("text", {
+                            value: '\n' + bodyText + '\n\n',color: 'blue',align:'center',whiteSpace:'pre'
+                        });
+                        
                         
                         var smartText = sceneEl.querySelector('#textHolder');
                         smartText.emit('textShow')
