@@ -7,52 +7,40 @@
     <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
 
     <script charset="utf-8" type="text/javascript" src="jquery.csv.js"></script>
-    <script src="https://aframe.io/releases/0.7.1/aframe.min.js"></script>
+    <script src="https://aframe.io/releases/0.8.2/aframe.min.js"></script>
     <script src="https://unpkg.com/aframe-text-geometry-component@^0.5.0/dist/aframe-text-geometry-component.min.js"></script>
     <script src="./outline/aframe-outline.min.js"></script>
-    <script src="hover_text.js"></script>
     <script src="data.js"></script>
     <script src="script.js"></script>
-    <script src="terrain.js"></script>
     <script src="step.js"></script>
 
 </head>
 
 <body>
-    <a-scene >
-        
- <a-assets>
-    <a-mixin id="billboard" text="font: https://cdn.aframe.io/fonts/DejaVu-sdf.fnt" geometry="primitive: plane;   height: auto;"  material="color: #fff; opacity:0.8;" ></a-mixin>
+    <a-scene cursor="rayOrigin: mouse">
 
-  </a-assets>
+        <a-assets>
+            <a-mixin id="billboard" geometry="primitive: plane;   height: auto;" material="color: #fff; opacity:0.8;"></a-mixin>
+       
+        <img id="backgroundInsideHouse" crossorigin="anonymous" src="room.jpg">
+    
+        </a-assets>
 
-        
-        
-        
-        
-        <a-camera wasd-controls="fly: true">
 
-            <a-entity id="textHolder"  position="0 0.15 -1" >
+        <a-camera look-controls>
+
+            <a-entity id="textHolder" position="0 0.15 -1">
                 <a-entity id="title" mixin="billboard"></a-entity>
-                <a-entity  position="0 -.08 0" mixin="billboard" id="body"></a-entity>
-                <a-animation begin="textHide" easing="ease-out" dur="1000" attribute="scale" fill="forwards" to="0 0 0"></a-animation>
-                <a-animation begin="textShow" easing="ease-in" dur="1000" attribute="scale" fill="forwards" from="0 0 0" to="1 1 1"></a-animation>
+                <a-entity position="0 -.069 0" mixin="billboard" id="body"></a-entity>
+                <a-animation begin="textHide" easing="ease-in" dur="200" attribute="scale" fill="forwards" from="1 1 1" to="0 0 0"></a-animation>
+                <a-animation begin="textShow" easing="ease-in" dur="200" attribute="scale" fill="forwards" from="0 0 0" to="1 1 1"></a-animation>
             </a-entity>
-
-
-            <a-entity id="cursor" cursor="fuse: true; fuseTimeout: 1000" position="0 0 -1" geometry="primitive: ring; radiusInner: 0.01; radiusOuter: 0.02" material="color: red; shader: flat">
-
-                <a-animation begin="fusing" easing="ease-in" dur="1000" attribute="scale" fill="forwards" to="0.1 0.1 0.1"></a-animation>
-
-
-            </a-entity>
-
 
         </a-camera>
 
-        <a-entity id="stepHolder" position="0.185 -0.423 -3.504" rotation="0 -45 0"></a-entity>
+        <a-entity id="stepHolder" position="1.085 -0.802 -3.504" rotation="30 -45 -30"></a-entity>
 
-        <a-sky color="#ECECEC"></a-sky>
+        <a-sky id="background" color="#DDDDDD"></a-sky>
 
     </a-scene>
 </body>
