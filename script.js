@@ -30,11 +30,6 @@ $.when(getBloomData()).then(
             });
         }
 
-        //        $(sky).addEventListener('mouseenter',function (evt) {
-        //            smartText.emit('textHide')
-        //            console.log("fuse")
-        //        })
-
 
         function run() {
             var hue = 250;
@@ -87,16 +82,15 @@ $.when(getBloomData()).then(
                     entityEl.setAttribute("step", "height: " + height);
                     entityEl.setAttribute("class", "step");
                     var label = document.createElement('a-entity')
-                    label.setAttribute("text" , "value: " + text + "; width: 3; align:center; baseline: bottom; color: " + color);
+                    label.setAttribute("text", "value: " + text + "; width: 3; align:center; baseline: bottom; color: " + color);
                     label.setAttribute("rotation", "-20 45 0")
-                    console.log(text)
                     entityEl.append(label)
                     entityEl.setAttribute("position", `${-x} ${height/2} ${-y}  `);
                     countShiftY++
                     stepHolder.appendChild(entityEl);
 
-
-                    entityEl.addEventListener("mouseenter", function (evt) {
+                    smartText.emit('textHide')
+                    entityEl.addEventListener("mousedown", function (evt) {
                         var id = evt.currentTarget.id
                         var [row, col] = id.split("_")
                         console.log(row, col)
@@ -119,14 +113,9 @@ $.when(getBloomData()).then(
                             whiteSpace: 'pre'
                         });
 
-
-
                         smartText.emit('textShow')
 
-
-
                     });
-
 
                     lengthCounter++;
                 }

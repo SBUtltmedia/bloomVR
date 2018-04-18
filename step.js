@@ -59,7 +59,7 @@ AFRAME.registerComponent('step', {
         var sceneEl = document.querySelector('a-scene');
         var smartText = sceneEl.querySelector('#textHolder');
 
-        this.el.addEventListener("mouseleave", function (evt) {
+        this.el.addEventListener("mouseup", function (evt) {
             setTimeout(function () {
                 smartText.emit('textHide')
                 console.log("step")
@@ -76,7 +76,6 @@ AFRAME.registerComponent('step', {
     update: function (oldData) {
         var data = this.data;
         var el = this.el;
-//        el.querySelector('.label').setAttribute('rotation', {x:document.querySelector('a-camera').getAttribute("rotation").x,y:document.querySelector('a-camera').getAttribute("rotation").y,z:document.querySelector('a-camera').getAttribute("rotation").z})
         // If `oldData` is empty, then this means we're in the initialization process.
         // No need to update.
         if (Object.keys(oldData).length === 0) {
